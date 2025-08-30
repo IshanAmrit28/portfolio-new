@@ -38,16 +38,15 @@ const AboutSection = () => {
               </p>
             </div>
 
-            <Button
-              as="a"
-              href={resume}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2"
-            >
-              <Download className="w-4 h-4" />
-              Download Resume
-            </Button>
+            <a
+  href={resume}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-primary text-primary-foreground font-medium rounded-full shadow-md hover:shadow-lg transition-all"
+>
+  <Download className="w-4 h-4" />
+  Download Resume
+</a>
           </div>
         </div>
       </div>
