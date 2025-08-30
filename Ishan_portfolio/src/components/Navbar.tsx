@@ -91,63 +91,47 @@
 
 // export default Navbar;
 
-import { useState, useEffect } from "react";
-import ThemeToggle from "./ThemeToggle"; // Adjust path if needed
-import { Link } from "react-scroll"; // For smooth scroll
+import { useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   const navLinks = [
-    { name: "Home", href: "home" },
-    { name: "About", href: "about" },
-    { name: "Projects", href: "projects" },
-    { name: "Certificates", href: "certificates" },
-    { name: "Contact", href: "contact" },
+    { label: "Home", href: "#home" },
+    { label: "About", href: "#about" },
+    { label: "Projects", href: "#projects" },
+    { label: "Certificates", href: "#certificates" },
+    { label: "Contact", href: "#contact" },
   ];
 
-  // Close mobile menu automatically on window resize >= md
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
-    <nav className="fixed w-full bg-background z-50 shadow-md">
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo / Brand */}
-        <div className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-          Ishan Srivastava
-        </div>
+    <nav className="fixed w-full bg-background/80 backdrop-blur-md z-50 shadow-md">
+      <div className="container mx-auto px-6 flex justify-between items-center h-16">
+        <div className="text-2xl font-bold text-primary">Ishan</div>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link, index) => (
-            <Link
-              key={index}
-              to={link.href}
-              smooth={true}
-              duration={500}
-              className="text-muted-foreground hover:text-primary cursor-pointer transition-colors"
+        {/* Desktop Links */}
+        <div className="hidden md:flex gap-6 items-center">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-muted-foreground hover:text-primary transition-colors"
             >
-              {link.name}
-            </Link>
+              {link.label}
+            </a>
           ))}
           <ThemeToggle />
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center gap-4">
+        <div className="md:hidden flex items-center">
           <ThemeToggle />
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 text-muted-foreground hover:text-primary transition-colors"
+            onClick={toggleMenu}
+            className="ml-2 p-2 text-muted-foreground hover:text-primary focus:outline-none"
           >
             <svg
               className="w-6 h-6"
@@ -155,40 +139,46 @@ const Navbar = () => {
               stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+              {isOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
             </svg>
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu with slide-down animation */}
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-500 ${
-          isMobileMenuOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <div className="flex flex-col gap-4 px-6 py-4 bg-background">
-          {navLinks.map((link, index) => (
-            <Link
-              key={index}
-              to={link.href}
-              smooth={true}
-              duration={500}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-muted-foreground hover:text-primary cursor-pointer transition-colors"
-            >
-              {link.name}
-            </Link>
-          ))}
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden bg-background/90 backdrop-blur-md shadow-md">
+          <div className="flex flex-col gap-4 px-6 py-4">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-muted-foreground hover:text-primary transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 };
 
 export default Navbar;
+
