@@ -129,11 +129,11 @@ const AboutSection = () => {
     <section id="about" className="min-h-screen flex items-center py-20 bg-gradient-background">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
+
           {/* Photo */}
-          <div className="flex justify-center lg:justify-end">
+          <div className="flex justify-center lg:justify-start lg:pl-12">
             <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80">
-              {/* Decorative rotated background (only for lg screens) */}
+              {/* Decorative rotated background */}
               <div className="absolute inset-0 bg-gradient-primary rounded-2xl transform rotate-6 opacity-20 hidden lg:block"></div>
 
               <div className="relative bg-gradient-card rounded-2xl p-2 shadow-lg overflow-hidden">
@@ -144,7 +144,7 @@ const AboutSection = () => {
                 />
               </div>
 
-              {/* Animated circle (only for lg screens) */}
+              {/* Animated circle */}
               <div className="hidden lg:block absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-primary rounded-full opacity-20 animate-pulse"></div>
             </div>
           </div>
