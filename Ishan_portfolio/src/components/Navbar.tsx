@@ -109,7 +109,7 @@ const Navbar = () => {
   return (
     <nav className="fixed w-full bg-background/80 backdrop-blur-md z-50 shadow-md">
       <div className="container mx-auto px-6 flex justify-between items-center h-16">
-        <div className="text-2xl font-bold text-primary">Ishan</div>
+        <div className="text-2xl font-bold text-primary"></div>
 
         {/* Desktop Links */}
         <div className="hidden md:flex gap-6 items-center">
