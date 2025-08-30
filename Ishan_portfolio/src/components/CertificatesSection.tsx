@@ -11,29 +11,25 @@ const CertificatesSection = () => {
       title: "AWS Certified Solutions Architect",
       issuer: "ETHNUS",
       date: "2025",
-      image: aws,
-      verifyUrl: "#"
+      image: aws
     },
     {
-      title: "Data Science",
-      issuer: "RBPEL",
+      title: "Comprehensive Data Science for Beginners",
+      issuer: "IIT Roorkee & RBPL",
       date: "2024",
-      image: ds,
-      verifyUrl: "#"
+      image: ds
     },
     {
-      title: "Full Stack Web Development",
+      title: "MERN Full Stack Certification Program",
       issuer: "ETHNUS",
       date: "2025",
-      image: mern,
-      verifyUrl: "#"
+      image: mern
     },
     {
-      title: "Machine Learning",
-      issuer: "RBPEL",
+      title: "Machine Learning with Python",
+      issuer: "IIT Roorkee & RBPL",
       date: "2024",
-      image: ml,
-      verifyUrl: "#"
+      image: ml
     }
   ];
 
@@ -79,9 +75,11 @@ const CertificatesSection = () => {
                     Issued by <span className="font-medium text-foreground">{cert.issuer}</span>
                   </p>
 
-                  <Button 
-                    variant="outline" 
+                  {/* Button opens certificate image in new tab */}
+                  <Button
+                    variant="outline"
                     className="w-full flex items-center gap-2 hover:bg-primary hover:text-primary-foreground transition-colors"
+                    onClick={() => window.open(cert.image, "_blank", "noopener,noreferrer")}
                   >
                     <ExternalLink className="w-4 h-4" />
                     Verify Certificate
