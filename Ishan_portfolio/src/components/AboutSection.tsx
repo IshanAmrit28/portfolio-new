@@ -1,4 +1,7 @@
 import profilePhoto from '@/assets/profile-photo.jpeg';
+import resume from '@/assets/Resume.pdf'; 
+import { Button } from '@/components/ui/button';
+import { Download } from 'lucide-react';
 
 const AboutSection = () => {
   return (
@@ -20,7 +23,7 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* About Content */}
+          
           <div className="text-center lg:text-left">
             <h1 className="text-5xl lg:text-6xl font-bold mb-6">
               <span className="block text-foreground">Hello, I'm</span>
@@ -35,20 +38,16 @@ const AboutSection = () => {
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-              <div className="px-4 py-2 bg-card rounded-full shadow-md border border-border">
-                <span className="text-sm font-medium text-primary">React</span>
-              </div>
-              <div className="px-4 py-2 bg-card rounded-full shadow-md border border-border">
-                <span className="text-sm font-medium text-primary">Node.js</span>
-              </div>
-              <div className="px-4 py-2 bg-card rounded-full shadow-md border border-border">
-                <span className="text-sm font-medium text-primary">TypeScript</span>
-              </div>
-              <div className="px-4 py-2 bg-card rounded-full shadow-md border border-border">
-                <span className="text-sm font-medium text-primary">AWS</span>
-              </div>
-            </div>
+            <Button
+              as="a"
+              href={resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2"
+            >
+              <Download className="w-4 h-4" />
+              Download Resume
+            </Button>
           </div>
         </div>
       </div>
