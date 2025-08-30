@@ -82,7 +82,7 @@ const CertificatesSection = () => {
                     onClick={() => window.open(cert.image, "_blank", "noopener,noreferrer")}
                   >
                     <ExternalLink className="w-4 h-4" />
-                    Verify Certificate
+                    Open Certificate
                   </Button>
                 </div>
               </div>
