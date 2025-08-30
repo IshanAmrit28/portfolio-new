@@ -11,28 +11,28 @@ const CertificatesSection = () => {
       title: "AWS Certified Solutions Architect",
       issuer: "ETHNUS",
       date: "2025",
-      image: {aws},
+      image: aws,
       verifyUrl: "#"
     },
     {
       title: "Data Science",
       issuer: "RBPEL",
       date: "2024",
-      image: {ds},
+      image: ds,
       verifyUrl: "#"
     },
     {
       title: "Full Stack Web Development",
       issuer: "ETHNUS",
       date: "2025",
-      image: {mern},
+      image: mern,
       verifyUrl: "#"
     },
     {
       title: "Machine Learning",
       issuer: "RBPEL",
       date: "2024",
-      image: {ml},
+      image: ml,
       verifyUrl: "#"
     }
   ];
